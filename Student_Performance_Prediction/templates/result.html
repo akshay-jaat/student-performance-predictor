@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prediction Result | LearnLens</title><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></head>
+<body><nav class="nav"><a class="brand" href="/">Learn<span>Lens</span></a><div><a href="/">New prediction</a><a href="/about">About Project</a></div></nav>
+<main class="container result-wrap">
+  <section class="hero compact"><div class="eyebrow">YOUR PREDICTION REPORT</div><h1>Here is your <span>performance outlook.</span></h1><p>This is an estimate from the trained Random Forest model.</p></section>
+  <section class="result-grid">
+    <div class="panel score-panel"><div class="eyebrow">ESTIMATED FINAL MARKS</div><div class="score">{{ score }}<small>/100</small></div><span class="status {{ css_class }}">{{ label }}</span><div class="meter"><span style="width: {{ score }}%"></span></div><p class="note">Predicted score is an estimate, not a guaranteed result.</p></div>
+    <div class="panel"><div class="eyebrow">YOUR INPUT SUMMARY</div><h2>Academic profile</h2><div class="summary">
+      <div><span>Study hours/day</span><b>{{ data.study_hours }}</b></div><div><span>Attendance</span><b>{{ data.attendance }}%</b></div>
+      <div><span>Previous marks</span><b>{{ data.previous_marks }}%</b></div><div><span>Assignment score</span><b>{{ data.assignment_score }}%</b></div><div><span>Sleep hours/day</span><b>{{ data.sleep_hours }}</b></div>
+    </div></div>
+  </section>
+  <section class="panel tips"><div class="eyebrow">NEXT STEPS</div><h2>Suggestions to improve</h2><ul>{% for tip in tips %}<li>{{ tip }}</li>{% endfor %}</ul><a class="btn secondary" href="/">Run another prediction <span>↗</span></a></section>
+  <footer>LearnLens · Student Performance Prediction System</footer>
+</main></body></html>
